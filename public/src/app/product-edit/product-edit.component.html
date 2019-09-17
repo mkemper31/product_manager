@@ -1,0 +1,23 @@
+<h3>Edit Product</h3>
+<form (submit)='onSubmit(productForm)' #productForm='ngForm'>
+  <div>
+    <p *ngIf='reply["title"]'>{{reply['title'] | json }}</p>
+    <label for="title" class="mb-0">Title</label>
+    <input type="text" [(ngModel)]="product.title" name="title" id="title" #title="ngModel" class="form-control" [ngClass]="{ 'is-invalid': reply['title'] }" required>
+    <div *ngIf='reply["title"]' class="invalid-feedback">
+      {{reply.title.message}}
+    </div>
+  </div>
+  <div>
+    <label for="price" class="mb-0">Price</label>
+    <input type="number" [(ngModel)]="product.price" name="price" id="price" #price="ngModel" step="0.01" class="form-control" min="0" [ngClass]="{ 'is-invalid': reply['price'] }">
+    <div *ngIf='reply["price"]' class="invalid-feedback">
+      {{reply.price.message}}
+    </div>
+  </div>
+  <div>
+    <label for="image_url" class="mb-0">Image URL</label>
+    <input type="text" [(ngModel)]="product.image_url" name="image_url" #image_url="ngModel" id="image_url" class="form-control">
+  </div>
+  <button class="btn btn-primary">Submit</button>
+</form>

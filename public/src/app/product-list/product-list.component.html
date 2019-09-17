@@ -1,0 +1,12 @@
+<h3>Products List</h3>
+<div class="row justify-content-between mx-1">
+  <div *ngFor="let product of products" class="col-5 border border-dark">
+    <img *ngIf='product.image_url' src="{{product.image_url}}" class="w-75">
+    <h6>{{product.title}}</h6>
+    <h6>{{product.price}}</h6>
+    <div class="row">
+      <button [routerLink]="['edit/' + product._id]" routerLinkActive="router-link-active" class="btn btn-sm btn-secondary">Edit</button>
+      <button (click)="deleteProduct(product._id)" class="btn btn-sm btn-danger">Delete</button>
+    </div>
+  </div>
+</div>
